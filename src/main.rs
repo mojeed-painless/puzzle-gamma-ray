@@ -188,8 +188,15 @@ fn main() {
 
     /* Enter your solution here */
 
-    let nullifier_hack = MNT4BigFr::from(0);
-    let secret_hack = MNT4BigFr::from(0);
+    let nullifier_hack = MNT4BigFr::from(1);
+    let secret_hack = MNT4BigFr::from(2);
+
+
+
+    // Prove and Verify with New Values
+    let proof = Groth16::<MNT4_753>::prove(&pk, c.clone(), rng).unwrap();
+    assert!(Groth16::<MNT4_753>::verify(&vk, &vec![root, nullifier_hack], &proof).unwrap());
+
 
     /* End of solution */
 
